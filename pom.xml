@@ -46,10 +46,6 @@
     <fabric8.env.ACTIVEMQ_USERNAME>amq_username</fabric8.env.ACTIVEMQ_USERNAME>
     <fabric8.env.ACTIVEMQ_PASSWORD>amq_password</fabric8.env.ACTIVEMQ_PASSWORD>
     -->
-    <fabric8.label.component>${project.artifactId}</fabric8.label.component>
-    <fabric8.label.container>karaf</fabric8.label.container>
-    <fabric8.label.group>quickstarts</fabric8.label.group>
-    <fabric8.iconRef>camel</fabric8.iconRef>
 
     <!-- maven plugin versions -->
     <fabric8.maven.plugin.version>3.0.28</fabric8.maven.plugin.version>
