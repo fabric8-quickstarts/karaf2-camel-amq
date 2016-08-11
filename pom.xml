@@ -34,7 +34,7 @@
     <fuse.version>6.2.1.redhat-117</fuse.version>
     <fabric8.version>2.2.145</fabric8.version>
     <fabric8.kubernetes.version>1.4.1</fabric8.kubernetes.version>
-    <karaf.plugin.version>4.0.2.redhat-621067</karaf.plugin.version>
+    <karaf.plugin.version>4.0.2.redhat-621079</karaf.plugin.version>
 
     <!-- maven plugin versions -->
     <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
