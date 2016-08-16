@@ -33,16 +33,17 @@
     <!-- configure the versions you want to use here -->
     <fuse.version>6.2.1.redhat-117</fuse.version>
     <fabric8.version>2.2.145</fabric8.version>
-    <fabric8.kubernetes.version>1.4.1</fabric8.kubernetes.version>
+    <fabric8.version>2.2.152</fabric8.version>
+    <fabric8.kubernetes.version>1.4.4</fabric8.kubernetes.version>
     <karaf.plugin.version>4.0.2.redhat-621079</karaf.plugin.version>
-
+    
     <!-- maven plugin versions -->
     <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
     <maven-bundle-plugin.version>2.3.7</maven-bundle-plugin.version>
     <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
     <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
-    <fabric8.maven.plugin.version>3.1.4</fabric8.maven.plugin.version>
+    <fabric8.maven.plugin.version>3.1.15</fabric8.maven.plugin.version>
   </properties>
 
   <dependencyManagement>
@@ -97,6 +98,13 @@
       <classifier>features</classifier>
       <type>xml</type>
     </dependency>
+    <dependency>
+      <groupId>io.fabric8</groupId>
+      <artifactId>fabric8-karaf-features</artifactId>
+      <version>${fabric8.version}</version>
+      <classifier>features</classifier>
+      <type>xml</type>
+    </dependency>
   </dependencies>
 
   <build>
@@ -133,30 +141,6 @@
             </Import-Package>
           </instructions>
         </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>${maven-resources-plugin.version}</version>
-        <executions>
-          <execution>
-            <id>filter-extra-resources</id>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <phase>process-resources</phase>
-            <configuration>
-              <outputDirectory>${project.build.directory}/fabric8</outputDirectory>
-              <resources>
-                <resource>
-                  <directory>src/main/fabric8</directory>
-                  <filtering>true</filtering>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
 
       <!-- plugin goals have to be executed in order -->
@@ -218,9 +202,9 @@
             <feature>activemq-client</feature>
             <feature>kubernetes-client</feature>
             <feature>openshift-client</feature>
+            <feature>fabric8-karaf-blueprint</feature>
           </startupFeatures>
           <startupBundles>
-            <bundle>mvn:io.fabric8/fabric8-karaf/${fabric8.version};start-level=60</bundle>
             <bundle>mvn:${project.groupId}/${project.artifactId}/${project.version};start-level=80</bundle>
           </startupBundles>
         </configuration>
