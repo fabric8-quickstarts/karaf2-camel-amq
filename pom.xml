@@ -35,7 +35,7 @@
     <fabric8.version>2.2.152</fabric8.version>
     <fabric8.kubernetes.version>1.4.4</fabric8.kubernetes.version>
     <karaf.plugin.version>4.0.2.redhat-621079</karaf.plugin.version>
-    
+
     <!-- maven plugin versions -->
     <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
     <maven-surefire-plugin.version>2.18.1</maven-surefire-plugin.version>
@@ -213,7 +213,7 @@
       <plugin>
         <groupId>io.fabric8</groupId>
         <artifactId>fabric8-maven-plugin</artifactId>
-        <version>${fabric8.maven.plugin.version}</version>        
+        <version>${fabric8.maven.plugin.version}</version>
         <executions>
           <execution>
             <id>generate-resource</id>
@@ -241,6 +241,15 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <repositories>
+        <repository>
+          <id>central</id>
+          <name>Maven Repository Switchboard</name>
+          <layout>default</layout>
+          <url>http://repo1.maven.org/maven2</url>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
         <repository>
           <id>fusesource.m2</id>
           <name>FuseSource Community Release Repository</name>
@@ -279,6 +288,18 @@
         </repository>
       </repositories>
       <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <name>Maven Plugin Repository</name>
+          <url>http://repo1.maven.org/maven2</url>
+          <layout>default</layout>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <releases>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+        </pluginRepository>
         <pluginRepository>
           <id>fusesource.m2</id>
           <name>FuseSource Community Release Repository</name>
