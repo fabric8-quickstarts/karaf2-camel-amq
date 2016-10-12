@@ -17,9 +17,9 @@ The example can be built with
 
 It is assumed that OpenShift platform is already running. If not you can find details how to [Install OpenShift at your site](https://docs.openshift.com/enterprise/3.1/install_config/install/index.html).
 
-The example can be built and deployed using a single goal:
+The example can be built and run on OpenShift using a single goal:
 
-    mvn -Pf8-deploy
+    mvn fabric8:run
 
 When the example runs in OpenShift, you can use the OpenShift client tool to inspect the status
 
