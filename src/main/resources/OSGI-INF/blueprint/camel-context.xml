@@ -26,13 +26,17 @@
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
     xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.5.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="              http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd              http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
-    <ext:property-placeholder evaluator="fabric8" id="property-placeholder-a661f3ed-2e34-4518-afc3-44a5f34691d2"/>
+
+    <ext:property-placeholder evaluator="fabric8" id="fabric8PropertyPlaceholder"/>
+
     <bean class="io.fabric8.quickstarts.camelamq.OrderGenerator" id="orderGenerator"/>
+
     <bean class="org.apache.activemq.camel.component.ActiveMQComponent" id="activemq">
         <property name="brokerURL" value="tcp://${env+service:ACTIVEMQ_SERVICE_NAME}"/>
         <property name="userName" value="${env:ACTIVEMQ_USERNAME}"/>
         <property name="password" value="${env:ACTIVEMQ_PASSWORD}"/>
     </bean>
+
     <!--
     The namespace for the camelContext element in Blueprint is 'http://camel.apache.org/schema/blueprint'. Additionally,
     we can also define namespace prefixes we want to use them in the XPath expressions in our CBR.
@@ -42,6 +46,7 @@
   -->
     <camelContext id="jms-example-context"
         xmlns="http://camel.apache.org/schema/blueprint" xmlns:order="http://fabric8.com/examples/order/v7">
+
         <!-- a route to generate a random order every 5th second -->
         <route id="generate-order">
             <from id="timer" uri="timer:order?period=5000"/>
@@ -51,6 +56,7 @@
             </setHeader>
             <to id="to-jms-input" uri="file:work/jms/input"/>
         </route>
+
         <!--
       When this route is started, it will automatically create the work/jms/input directory where you can drop the
       file that need to be processed.
@@ -66,7 +72,9 @@
             <log id="log-order" message="Receiving order ${file:name}"/>
             <to id="to-incoming-orders" uri="activemq:incomingOrders"/>
         </route>
-        <!--
+
+
+    <!--
       This route consumes messages from the JMS queue incomingOrders on the ActiveMQ broker within the ESB.
 
       The <choice/> element contains the content based router. The two <when/> clauses use XPath to define the criteria
@@ -94,5 +102,6 @@
             </choice>
             <log id="final-log" message="Done processing ${file:name}"/>
         </route>
+
     </camelContext>
 </blueprint>
