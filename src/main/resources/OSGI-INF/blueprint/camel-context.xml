@@ -38,14 +38,12 @@
     </bean>
 
     <!--
-    The namespace for the camelContext element in Blueprint is 'http://camel.apache.org/schema/blueprint'. Additionally,
-    we can also define namespace prefixes we want to use them in the XPath expressions in our CBR.
+    The namespace for the camelContext element in Blueprint is 'http://camel.apache.org/schema/blueprint'.
 
     While it is not required to assign id's to the <camelContext/> and <route/> elements, it is a good idea
     to set those for runtime management purposes (logging, JMX MBeans, ...)
   -->
-    <camelContext id="jms-example-context"
-        xmlns="http://camel.apache.org/schema/blueprint" xmlns:order="http://fabric8.com/examples/order/v7">
+    <camelContext id="jms-example-context" xmlns="http://camel.apache.org/schema/blueprint">
 
         <!-- a route to generate a random order every 5th second -->
         <route id="generate-order">
@@ -86,12 +84,12 @@
             <from id="route-from-incoming-orders" uri="activemq:incomingOrders"/>
             <choice id="route-choice-country">
                 <when id="route-when-uk">
-                    <xpath>/order:order/order:customer/order:country = 'UK'</xpath>
+                    <xpath>/order/customer/country = 'UK'</xpath>
                     <log id="route-log-uk" message="Sending order ${file:name} to the UK"/>
                     <to id="route-to-file-uk" uri="file:work/jms/output/uk"/>
                 </when>
                 <when id="route-when-us">
-                    <xpath>/order:order/order:customer/order:country = 'US'</xpath>
+                    <xpath>/order/customer/country = 'US'</xpath>
                     <log id="route-log-us" message="Sending order ${file:name} to the US"/>
                     <to id="route-to-file-us" uri="file:work/jms/output/us"/>
                 </when>
