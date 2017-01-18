@@ -16,9 +16,12 @@ The example can be built with
 
 It is assumed that OpenShift platform is already running. If not you can find details how to [Install OpenShift at your site](https://docs.openshift.com/enterprise/3.1/install_config/install/index.html).
 
-The example can be built and run on OpenShift using a single goal:
+When you Deployed the JBoss A-MQ xPaaS product, it should have been assigned a few serivce names based on the broker name and be configured with a user name and password.  The service this application needs to connect to is ${broker-name}-amq-tcp.
+To see all the running service names run `oc get services`.  Once you have identified the A-MQ service name, user name, and password you can package and deploy your app on OpenShift using a command similar to the following:
 
-    mvn fabric8:deploy
+```
+mvn fabric8:deploy -Dactivemq.service.name=broker-amq-tcp -Dactivemq.broker.username=admin -Dactivemq.broker.password=admin
+```
 
 When the example runs in OpenShift, you can use the OpenShift client tool to inspect the status
 

@@ -27,6 +27,7 @@
   <description>Karaf 2 example running a Camel route connecting to ActiveMQ</description>
 
   <properties>
+    <activemq.service.name>broker-amq-tcp</activemq.service.name>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- configure the versions you want to use here -->

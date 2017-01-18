@@ -13,8 +13,8 @@ spec:
               memory: 512Mi
           env:
           - name: ACTIVEMQ_SERVICE_NAME
-            value: broker-amq-tcp
+            value: ${activemq.service.name}
           - name: ACTIVEMQ_USERNAME
-            value: admin
+            value: ${activemq.broker.username}
           - name: ACTIVEMQ_PASSWORD
-            value: admin
+            value: ${activemq.broker.password}
