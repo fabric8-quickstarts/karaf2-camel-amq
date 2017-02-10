@@ -43,6 +43,13 @@
     <fabric8.maven.plugin.version>3.2.8</fabric8.maven.plugin.version>
   </properties>
 
+  <repositories>
+      <repository>
+        <id>org.jboss.fuse.bom</id>
+        <url>https://maven.repository.redhat.com/ga/</url>
+      </repository>
+  </repositories>
+
   <dependencyManagement>
     <dependencies>
       <!-- fabric8 bom must be before fabric8 bom -->
