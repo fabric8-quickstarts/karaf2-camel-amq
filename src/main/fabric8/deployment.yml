@@ -7,14 +7,14 @@ spec:
           resources:
             requests:
               cpu: "0.2"
-              memory: 1.5G
+              memory: 128Mi
             limits:
               cpu: "1.0"
-              memory: 2G
+              memory: 512Mi
           env:
           - name: ACTIVEMQ_SERVICE_NAME
-            value: activemq
+            value: ${activemq.service.name}
           - name: ACTIVEMQ_USERNAME
-            value: admin
+            value: ${activemq.broker.username}
           - name: ACTIVEMQ_PASSWORD
-            value: admin
+            value: ${activemq.broker.password}
