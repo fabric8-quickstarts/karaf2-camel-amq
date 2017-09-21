@@ -14,7 +14,7 @@ The example can be built with
 It is assumed that:
 - OpenShift platform is already running, if not you can find details how to [Install OpenShift at your site](https://docs.openshift.com/container-platform/3.3/install_config/index.html).
 - Your system is configured for Fabric8 Maven Workflow, if not you can find a [Get Started Guide](https://access.redhat.com/documentation/en/red-hat-jboss-middleware-for-openshift/3/single/red-hat-jboss-fuse-integration-services-20-for-openshift/)
-- The Red Hat JBoss A-MQ xPaaS product should already be installed and running on your OpenShift installation, one simple way to run a A-MQ service is following the documentation of the A-MQ xPaaS image for OpenShift related to the `amq62-basic` template.
+- The Red Hat JBoss A-MQ xPaaS product should already be installed and running on your OpenShift installation, one simple way to run a A-MQ service is following the documentation of the A-MQ xPaaS image for OpenShift related to the `amq63-basic` template.
 
 When you Deployed the JBoss A-MQ xPaaS product, it should have been assigned a few serivce names based on the broker name and be configured with a user name and password.  The service this application needs to connect to is ${broker-name}-amq-tcp.
 To see all the running service names run `oc get services`.  Once you have identified the A-MQ service name, user name, and password you can package and deploy your app on OpenShift using a command similar to the following:
